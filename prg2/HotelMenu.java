@@ -1,3 +1,22 @@
+/*
+ * Project ID: PS14APRILOF24JFS#012
+ * Author: PUSHKAR D
+ * Email: pushkardwarkanath@gmail.com
+ * GitHub: https://github.com/pushkar666
+ * 
+ * Project Synopsis:
+ * This project is a simple hotel management system where users can view a menu,
+ * select items, and get a bill that includes GST calculations. It supports an
+ * admin mode to add new items to the menu. The program continuously displays the
+ * menu and processes user choices until terminated.
+ * 
+ * Classes and Interfaces:
+ * - HotelIO: Handles the billing information.
+ * - HotelInterface: Defines the structure for the hotel menu and billing system.
+ * - HotelMenu: Implements HotelInterface, manages menu operations, item selection, 
+ *              and bill processing.
+ * - Main: Contains the main method to run the application.
+ */
 package com.HotelIndraprastha.prg2;
 
 import java.util.ArrayList;
@@ -57,25 +76,32 @@ public class HotelMenu implements Hotelinterface{
 	 */
 	
 	public void choice() {
-		int ch = sc.nextInt();
-		if(ch!=0 && ch <= menu.size()) {
-			 String selectedItem = (String) menu.keySet().toArray()[ch - 1];
-			 Double price = menu.get(selectedItem);
-			 selectMenu.put(selectedItem, price);
-			 System.out.println("Enter the number of plates");
-			 int plates = sc.nextInt();
-			 qty.add(plates);
+		try {
+			int ch = sc.nextInt();
+			if (ch != 0 && ch <= menu.size()) {
+				String selectedItem = (String) menu.keySet().toArray()[ch - 1];
+				Double price = menu.get(selectedItem);
+				selectMenu.put(selectedItem, price);
+				System.out.println("Enter the number of plates");
+				int plates = sc.nextInt();
+				qty.add(plates);
+			}
+			else if (ch == 0) {
+				validateAdmin();
+			}
+			else if (ch == (menu.size()) + 1) {
+				processBill();
+			
+			} 
+			else {
+				System.out.println("Invalid choice, try again");
+			}
 		}
-		else if(ch == 0) {
-			validateAdmin();
-		}
-		else if(ch==(menu.size())+1) {
-			processBill();
-		}
-		else {
-			System.out.println("Invalid choice, try again");
-		}
-	}
+		catch (Exception e) {
+			System.out.println("Invalid input. Please enter a number.");
+			sc.next();
+        }
+    }
 	
 	public void validateAdmin() {
 		System.out.println("Enter the admin Password: ");
@@ -127,6 +153,17 @@ public class HotelMenu implements Hotelinterface{
 		System.out.println("Total Payable bill is (Rounded off): "+Math.floor(totalBill));
 		System.out.println("---------------------------------------------");
 		System.out.println("Press any key to continue ... ");
+		pause();
 		return;
 	}
+	
+	private void pause() {
+		try {
+			System.in.read();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
