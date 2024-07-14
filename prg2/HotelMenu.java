@@ -23,16 +23,15 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 
-
-
 interface Hotelinterface {
-    String passWord = "12345";
+	String passWord = "12345";
 	void choice();
-    LinkedHashMap<String, Double> menu = new LinkedHashMap<>();
-    LinkedHashMap<String, Double> selectMenu = new LinkedHashMap<>();
-    ArrayList<Integer> qty = new ArrayList<>();
-    void dispBill(HotelIO io);
+	LinkedHashMap<String, Double> menu = new LinkedHashMap<>();
+	LinkedHashMap<String, Double> selectMenu = new LinkedHashMap<>();
+	ArrayList<Integer> qty = new ArrayList<>();
+	void dispBill(HotelIO io);
 }
+
 public class HotelMenu implements Hotelinterface{
 	Scanner sc = new Scanner(System.in);
 	public void addDefMenu()
@@ -52,17 +51,17 @@ public class HotelMenu implements Hotelinterface{
 		int i = 1;
 		System.out.println("*************START WITH STARTERS*************");
 
-		// Print header
 		System.out.printf("%-5s %-25s %10s%n", "No.", "Item", "Price");
 		System.out.println("*********************************************");	
 		
 		System.out.printf("%-5s %-25s", 0+".", "If you are admin press zero to add items");		
 		System.out.println();
-		// Print items
+
 		for (String key : menu.keySet()) {
 			System.out.printf("%-5s %-25s %10.2f%n", i+".", key, menu.get(key));
 			i++;
 		}
+		
 		System.out.printf("%-5s %-25s", i+".", "TO PRINT THE BILL");
 		System.out.println("\n*******************************************");
 	}
