@@ -1,7 +1,7 @@
 # Hotel Management System
 
 ## Project Overview
-This project implements a simple hotel management system in Java. 
+This project implements a simple hotel management system in Java using Collection Framework. 
 It allows users to view a menu, select items, calculate bills including GST, 
 and supports an admin mode for adding new menu items. 
 The program continuously displays the menu and processes user choices until terminated.
