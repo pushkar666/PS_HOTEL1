@@ -51,7 +51,7 @@ public class HotelMenu implements Hotelinterface{
 		int i = 1;
 		System.out.println("*************START WITH STARTERS*************");
 
-		System.out.printf("%-5s %-25s %10s%n", "No.", "Item", "Price");
+		System.out.printf("%-5s %-25s %-10s\n", "No.", "Item", "Price");
 		System.out.println("*********************************************");	
 		
 		System.out.printf("%-5s %-25s", 0+".", "If you are admin press zero to add items");		
@@ -138,6 +138,7 @@ public class HotelMenu implements Hotelinterface{
         }
         io.setbill(totalBill);
         dispBill(io);
+        resetAfterBill();
 	}
 	
 	public void dispBill(HotelIO io) {
@@ -163,6 +164,11 @@ public class HotelMenu implements Hotelinterface{
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void resetAfterBill() {
+		selectMenu.clear();
+		qty.clear();
 	}
 	
 }
